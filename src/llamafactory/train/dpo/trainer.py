@@ -39,7 +39,7 @@ if TYPE_CHECKING:
 
     from ...hparams import FinetuningArguments
 
-
+# todo dpo 训练
 class CustomDPOTrainer(DPOTrainer):
     def __init__(
         self,
