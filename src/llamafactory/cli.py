@@ -72,11 +72,12 @@ def main():
         "version": partial(print, WELCOME),
         "help": partial(print, USAGE),
     }
-
+    # todo 启动命令！！！！！！
     command = sys.argv.pop(1) if len(sys.argv) > 1 else "help"
     if command == "train" and (is_env_enabled("FORCE_TORCHRUN") or (get_device_count() > 1 and not use_ray())):
         # launch distributed training
         nnodes = os.getenv("NNODES", "1")
+        # todo NODE_RANK
         node_rank = os.getenv("NODE_RANK", "0")
         nproc_per_node = os.getenv("NPROC_PER_NODE", str(get_device_count()))
         master_addr = os.getenv("MASTER_ADDR", "127.0.0.1")
